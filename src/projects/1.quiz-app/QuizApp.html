@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <style>
+        .custom-progress {
+            width: 100%;
+            height: 12px;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .custom-progress::-webkit-progress-bar {
+            background-color: #e5e7eb;
+            /* track color */
+            border-radius: 9999px;
+        }
+
+        .custom-progress::-webkit-progress-value {
+            background-color: #22c55e;
+            /* progress color */
+            border-radius: 9999px;
+        }
+
+        .custom-progress::-moz-progress-bar {
+            background-color: #22c55e;
+            /* Firefox */
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" class="h-screen w-screen flex justify-center items-center bg-[#f5efe6]">
+        <div id="home" class="flex flex-col bg-[#ecdede] p-20 justify-center items-center rounded-4xl">
+            <h1 class="text-[#e86a33] font-extrabold text-4xl m-5 p-[15px]">
+                Quiz Time!
+            </h1>
+            <p class="mb-7">Test your knowledge with these fun questions</p>
+            <button id="homeButton" class="bg-[#e86a33] text-white pt-[15px] pb-[15px] pr-[30px] pl-[30px] rounded-2xl">
+                Start Quiz
+            </button>
+        </div>
+<!--+++++++++++++++questionPage++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+        <div id="questionPage" class="flex flex-col bg-[#ffffff] p-5 justify-center items-center rounded-4xl w-150">
+            <div id="question" class="text-center font-semibold text-2xl">
+                What is the capital of France?
+            </div>
+            <div
+                class="flex flex-row justify-between gap-9 w-[100%] pr-3 pl-3 m-4 text-gray-500 font-medium text-[13px]">
+                <div>
+                    question <span id="current">1</span> of <span id="quantity"> </span>
+                </div>
+                <div>score <span id="score">0</span></div>
+            </div>
+            <div id="options" class="w-[100%] flex flex-col gap-2 items-center">
+                <button id="op1" class="bg-[#f8f0e5] w-[100%] p-4 rounded-md border-2 border-[#eadbc8] text-left"
+                    value="op1">
+                    london
+                </button>
+                <button id="op2" class="bg-[#f8f0e5] w-[100%] p-4 rounded-md border-2 border-[#eadbc8] text-left"
+                    value="op2">
+                    london
+                </button>
+                <button id="op3" class="bg-[#f8f0e5] w-[100%] p-4 rounded-md border-2 border-[#eadbc8] text-left"
+                    value="op3">
+                    london
+                </button>
+                <button id="op4" class="bg-[#f8f0e5] w-[100%] p-4 rounded-md border-2 border-[#eadbc8] text-left"
+                    value="op4">
+                    london
+                </button>
+            </div>
+
+            <div id="answer">
+                <!-- answer goes here-->
+            </div>
+            <progress class="w-[100%] mt-7 mb-5 custom-progress" value="10" max="10"></progress>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <!--result page here+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++       -->
+        <div id="result" class="flex flex-col bg-[#ffffff] p-5 justify-center items-center rounded-4xl w-150">
+            <h1>quiz results </h1>
+            <div>
+                <div>you scored <span id="resultScore">3</span> out of <span id="resultQuantity"></span> </div>
+                <div></div>
+            </div>
+            <button>Restart quiz</button>
+        </div>
+    </div>
+    <script type="module">
+        //  var questionSets =[{question:"What is the capital of France?", option1:{data:"London", valid:false },option2:{data:"berlin", valid:false },option3:{data:"paris", valid:true } ,option4:{data:"berlin", valid:false } }]
+        var questionSets = [
+            {
+                question: "Which planet is known as the Red Planet?",
+                option1: { data: "Venus", valid: false },
+                option2: { data: "Mars", valid: true },
+                option3: { data: "Jupiter", valid: false },
+                option4: { data: "Saturn", valid: false },
+            },
+            {
+                question: "What is the largest ocean on Earth?",
+                option1: { data: "Atlantic Ocean", valid: false },
+                option2: { data: "Indian Ocean", valid: false },
+                option3: { data: "Arctic Ocean", valid: false },
+                option4: { data: "Pacific Ocean", valid: true },
+            },
+            {
+                question: "Who painted the Mona Lisa?",
+                option1: { data: "Vincent van Gogh", valid: false },
+                option2: { data: "Pablo Picasso", valid: false },
+                option3: { data: "Leonardo da Vinci", valid: true },
+                option4: { data: "Claude Monet", valid: false },
+            },
+            {
+                question: "What is the chemical symbol for Gold?",
+                option1: { data: "Gd", valid: false },
+                option2: { data: "Ag", valid: false },
+                option3: { data: "Au", valid: true },
+                option4: { data: "Fe", valid: false },
+            },
+            {
+                question: "Which element does the chemical symbol 'O' stand for?",
+                option1: { data: "Oxygen", valid: true },
+                option2: { data: "Osmium", valid: false },
+                option3: { data: "Ozone", valid: false },
+                option4: { data: "Gold", valid: false },
+            },
+        ];
+
+        const questionPage = document.querySelector("#questionPage");
+        questionPage.style.display = "none";
+        const question = document.querySelector("#question"); //innerhtml
+        const remain = document.querySelector("#current"); //innerhtml
+        const quantity = document.querySelector("#quantity"); //innerhtml
+        quantity.innerHTML = questionSets.length;
+        const score = document.querySelector("#score"); //innerhtml
+        const options = document.querySelector("#options");
+        const op1 = document.querySelector("#op1"); //innerhtml & value
+        const op2 = document.querySelector("#op2"); //innerhtml & value
+        const op3 = document.querySelector("#op3"); //innerhtml & value
+        const op4 = document.querySelector("#op4"); //innerhtml & value
+        const progressBar = document.querySelector("#progressBar"); //value & max
+
+
+
+// result page 
+        const resultQuantity = document.querySelector("#resultQuantity"); //innerhtml
+        resultQuantity.innerHTML = questionSets.length;
+
+
+
+        
+        document.querySelector("#home").style.display = "none";
+
+        document.querySelector("#homeButton").addEventListener("click", () => {
+            // document.querySelector("#home").style.display="none"
+        });
+
+
+
+
+
+    </script>
+</body>
+
+</html>
