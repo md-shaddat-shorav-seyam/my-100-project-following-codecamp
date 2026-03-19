@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat List Item</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="chat-list">
+      <!-- 1st item -->
+      <div class="chat-item unread">
+        <div class="avatar-wrapper">
+          <img src="https://i.pravatar.cc/100?img=1" alt="Sarah" class="avatar" />
+          <span class="status online"></span>
+        </div>
+
+        <div class="chat-content">
+          <div class="chat-header">
+            <h4 class="name">Sarah Wilson</h4>
+            <span class="time">2m ago</span>
+          </div>
+
+          <div class="chat-footer">
+            <p class="message">Hey! Are you coming to the party tonight? 🎉</p>
+            <span class="unread-badge">3</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2nd -->
+      <div class="chat-item">
+        <div class="avatar-wrapper">
+          <img src="https://i.pravatar.cc/100?img=3" alt="Mike" class="avatar" />
+          <span class="status online"></span>
+        </div>
+        <div class="chat-content">
+          <div class="chat-header">
+            <h4 class="name">Mike Johnson</h4>
+            <span class="time">15m ago</span>
+          </div>
+          <div class="chat-footer">
+            <p class="message">The project files have been uploaded ✓</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Item 3 - Offline -->
+      <div class="chat-item">
+        <div class="avatar-wrapper">
+          <img src="https://i.pravatar.cc/100?img=5" alt="Emma" class="avatar" />
+          <span class="status offline"></span>
+        </div>
+        <div class="chat-content">
+          <div class="chat-header">
+            <h4 class="name">Emma Davis</h4>
+            <span class="time">1h ago</span>
+          </div>
+          <div class="chat-footer">
+            <p class="message">Thanks for your help yesterday!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Item 4 - Away with unread -->
+      <div class="chat-item unread">
+        <div class="avatar-wrapper">
+          <img src="https://i.pravatar.cc/100?img=8" alt="Alex" class="avatar" />
+          <span class="status away"></span>
+        </div>
+        <div class="chat-content">
+          <div class="chat-header">
+            <h4 class="name">Alex Turner</h4>
+            <span class="time">3h ago</span>
+          </div>
+          <div class="chat-footer">
+            <p class="message">Can we reschedule our meeting to tomorrow?</p>
+            <span class="unread-badge">1</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Item 5 - Offline -->
+      <div class="chat-item">
+        <div class="avatar-wrapper">
+          <img src="https://i.pravatar.cc/100?img=9" alt="Lisa" class="avatar" />
+          <span class="status offline"></span>
+        </div>
+        <div class="chat-content">
+          <div class="chat-header">
+            <h4 class="name">Lisa Chen</h4>
+            <span class="time">Yesterday</span>
+          </div>
+          <div class="chat-footer">
+            <p class="message">See you next week! 👋</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

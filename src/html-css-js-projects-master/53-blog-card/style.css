@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background: #0f172a;
+  color: #fff;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 30px;
+}
+
+.blog-card {
+  background: #1e293b;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border: 1px solid #334155;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  border-color: #0ea5e9;
+}
+
+.card-image {
+  position: relative;
+}
+
+.card-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.blog-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.card-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #0ea5e9;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-content {
+  padding: 24px;
+}
+
+.card-meta {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.card-meta span {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.read-time::before {
+  content: ".";
+  margin-right: 1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  transition: color 0.2s;
+}
+
+.blog-card:hover .card-title {
+  color: #0ea5e9;
+}
+
+.card-excerpt {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #334155;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.author-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.read-btn {
+  background: transparent;
+  border: 2px solid #0ea5e9;
+  color: #0ea5e9;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.read-btn:hover {
+  background: #0ea5e9;
+  color: #fff;
+}
+
+@media (max-width: 400px) {
+  .card-image img {
+    height: 180px;
+  }
+
+  .card-footer {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .read-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
